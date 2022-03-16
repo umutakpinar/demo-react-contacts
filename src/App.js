@@ -1,10 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
+import Contacts from './components/Contacts';
 
 function App() {
   return (
     <>
-      <h1 className=''></h1>
+      <div className='container'>
+          <h1 className='display-1'>Main</h1>
+          <hr />
+          <Contacts></Contacts>
+      </div>
     </>
   );
 }
