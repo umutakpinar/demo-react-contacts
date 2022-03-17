@@ -1,15 +1,25 @@
 //Form index.js
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 
 function Index() {
-  const [form, setForm] = useState({});
+  const [form, setForm] = useState({ fullName: "", number: "" });
+
+  const formInputChanged = (e) => {
+    setForm({ ...form, [e.target.name] : e.target.value });
+  };
+
+  const formSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(form); //Böylece butona basıldığında bize form'u consola yazdırsın.
+  };
 
   return (
     <>
       <div className="container">
-        <form>
+        <form onSubmit={formSubmit}>
           <div className="input-group  mb-3">
             <label
               htmlFor="tbxFullName"
@@ -18,9 +28,11 @@ function Index() {
               Person :
             </label>
             <input
+              name="fullName"
               id="tbxFullName"
               type="text"
               placeholder="Full Name"
+              onChange={formInputChanged}
               className=" form-control input-group-append"
             />
           </div>
@@ -33,18 +45,20 @@ function Index() {
               Number :
             </label>
             <input
+              name="number"
               id="tbxNumber"
               type="text"
               placeholder="0555 555 55 55"
+              onChange={formInputChanged}
               className="form-control input-group-append"
             />
           </div>
 
           <div className="btn-group-sm float-right">
-            <button className="btn-lg btn-primary mr-1">Add</button>
-            <button className="btn-lg btn-danger">Remove</button>
+            <button type="submit" className="btn-lg btn-primary mr-1">
+              Add
+            </button>
           </div>
-
         </form>
       </div>
     </>
