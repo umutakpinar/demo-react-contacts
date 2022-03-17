@@ -19,6 +19,8 @@ function Index() {
     }
 
     console.log(form); //Böylece butona basıldığında bize form'u consola yazdırsın.
+    form.fullName = ""; //Buradaki form.fullName = "" ile form'un fullName değişkenini boş yapıyoruz.
+    form.number = ""; //Buradaki form.number = "" ile form'un number değişkenini boş yapıyoruz.
   };
 
   const btnAddClearInputs = (e) =>{
