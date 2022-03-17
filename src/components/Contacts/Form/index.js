@@ -13,6 +13,11 @@ function Index() {
   const formSubmit = (e) => {
     e.preventDefault();
 
+    if(form.fullName == "" || form.number == "") { //Buradaki if kontrolü ile form'un boş olup olmadığını kontrol ediyoruz
+      alert("Please fill all the fields");
+      return false;
+    }
+
     console.log(form); //Böylece butona basıldığında bize form'u consola yazdırsın.
   };
 
