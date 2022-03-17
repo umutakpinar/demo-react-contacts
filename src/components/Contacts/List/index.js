@@ -1,7 +1,7 @@
 //List index.js
 import React from 'react'
 
-function index() {
+function Index() {
     return (
         <>
             <h3 className=''>List Section</h3>
@@ -10,4 +10,4 @@ function index() {
     )
 }
 
-export default index
+export default Index

@@ -1,21 +1,24 @@
 //Form index.js
 
 import React from "react";
+import { useState } from "react";
 
-function index() {
+function Index() {
+  const [form, setForm] = useState({});
+
   return (
     <>
       <div className="container">
         <form>
           <div className="input-group  mb-3">
             <label
-              htmlFor="fullName"
+              htmlFor="tbxFullName"
               className="input-group-prepend input-group-text"
             >
               Person :
             </label>
             <input
-              id="fullName"
+              id="tbxFullName"
               type="text"
               placeholder="Full Name"
               className=" form-control input-group-append"
@@ -24,13 +27,13 @@ function index() {
 
           <div className="input-group  mb-3">
             <label
-              htmlFor="number"
+              htmlFor="tbxNumber"
               className="input-group-prepend input-group-text"
             >
               Number :
             </label>
             <input
-              id="number"
+              id="tbxNumber"
               type="text"
               placeholder="0555 555 55 55"
               className="form-control input-group-append"
@@ -48,4 +51,4 @@ function index() {
   );
 }
 
-export default index;
+export default Index;

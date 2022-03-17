@@ -3,7 +3,7 @@ import React from 'react'
 import List from './List'
 import Form from './Form'
 
-function index() {
+function Index() {
     return (
         <>
             <div className='container'>
@@ -16,4 +16,4 @@ function index() {
     )
 }
 
-export default index
+export default Index
