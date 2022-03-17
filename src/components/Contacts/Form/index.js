@@ -7,7 +7,7 @@ function Index() {
   const [form, setForm] = useState({ fullName: "", number: "" });
 
   const formInputChanged = (e) => {
-    setForm({ ...form, [e.target.name] : e.target.value });
+    setForm({ ...form, [e.target.name] : e.target.value }); //Buradaki [e.target.name] ile (yani Input'un anme değişkeni) fullName state'i ile aynı olmalı
   };
 
   const formSubmit = (e) => {
@@ -15,6 +15,11 @@ function Index() {
 
     console.log(form); //Böylece butona basıldığında bize form'u consola yazdırsın.
   };
+
+  const btnAddClearInputs = (e) =>{
+    document.getElementById("tbxFullName").value = "";
+    document.getElementById("tbxNumber").value = "";
+  }
 
   return (
     <>
@@ -55,7 +60,7 @@ function Index() {
           </div>
 
           <div className="btn-group-sm float-right">
-            <button type="submit" className="btn-lg btn-primary mr-1">
+            <button onClick={btnAddClearInputs} type="submit" className="btn-lg btn-primary mr-1">
               Add
             </button>
           </div>
