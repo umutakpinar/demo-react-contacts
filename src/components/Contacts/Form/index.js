@@ -13,21 +13,19 @@ function Index( {addContact, contacts} ) {
   const formSubmit = (e) => {
     e.preventDefault();
 
-    if(form.fullName == "" || form.number == "") { //Buradaki if kontrolü ile form'un boş olup olmadığını kontrol ediyoruz
+    if(form.fullName === "" || form.number === "") { //Buradaki if kontrolü ile form'un boş olup olmadığını kontrol ediyoruz
       alert("Please fill all the fields");
-      return false; // formu göndermeni engelliyor
+      return false; // formu göndermeni engelliyor herhangi biri boş değilse devam ediyor
     }
 
-    addContact(...contacts, form); //formu addContact prop'una gönderiyoruz, ki addContact prop'u Contacs Componetni içerisindeki contacts state'ine atıyor. (setContacts fonksiyonu)
+    addContact([...contacts, form]); //formu addContact prop'una gönderiyoruz, ki addContact prop'u Contacs Componetni içerisindeki contacts state'ine atıyor. (setContacts fonksiyonu). Contacts bir dizi olduğu için dizi olarak gönderdim! [] kapalı aprantezlere dikkat!  
     console.log("Form'u addContact propuna gönderdim.")
     console.log(form); //Böylece butona basıldığında bize form'u consola yazdırsın.
-    form.fullName = ""; //Buradaki form.fullName = "" ile form'un fullName değişkenini boş yapıyoruz. Böylece state'de tutulan bilgi siliniyor.
-    form.number = ""; //Buradaki form.number = "" ile form'un number değişkenini boş yapıyoruz. Böylece state'de tutulan bilgi siliniyor.
+    btnAddClearInputs(); //Butona basıldığında formu temizleme işlemi yapıyor.
   };
 
   const btnAddClearInputs = (e) =>{
-    document.getElementById("tbxFullName").value = ""; //UI'daki girdileri temizliyoruz. Tekrar tekrar add butonuna basılırsa girdileri tekrar doldurmasın diye. 
-    document.getElementById("tbxNumber").value = ""; //Bunu böyle yapmaktansa inputlara value olarak contacstaki değerlerini ver sonra setForm ile boşluk ata
+    setForm({fullName: "", number: ""}); //Butona basıldığında formu temizliyoruz.
   }
 
   return (
@@ -48,6 +46,7 @@ function Index( {addContact, contacts} ) {
               placeholder="Full Name"
               onChange={formInputChanged}
               className=" form-control input-group-append"
+              value={form.fullName}
             />
           </div>
 
@@ -65,11 +64,12 @@ function Index( {addContact, contacts} ) {
               placeholder="0555 555 55 55"
               onChange={formInputChanged}
               className="form-control input-group-append"
+              value={form.number}
             />
           </div>
 
           <div className="btn-group-sm float-right">
-            <button onClick={btnAddClearInputs} type="submit" className="btn-lg btn-primary mr-1">
+            <button type="submit" className="btn-lg btn-primary mr-1">
               Add
             </button>
           </div>
