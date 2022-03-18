@@ -4,7 +4,8 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 
 function Index( {addContact, contacts} ) {
-  const [form, setForm] = useState({ fullName: "", number: "" });
+  const initialFormValues = { fullName : "", phone : ""}; //Eğer sadece name ve phone gibi değil birçok değişkeni kullanmak istersem, bu şekilde yapabilirim ki her birini tek tek yazmak zorunda kalmayayım.
+  const [form, setForm] = useState(initialFormValues);
 
   const formInputChanged = (e) => {
     setForm({ ...form, [e.target.name] : e.target.value }); //Buradaki [e.target.name] ile (yani Input'un anme değişkeni) fullName state'i ile aynı olmalı
@@ -25,7 +26,7 @@ function Index( {addContact, contacts} ) {
   };
 
   const btnAddClearInputs = (e) =>{
-    setForm({fullName: "", number: ""}); //Butona basıldığında formu temizliyoruz.
+    setForm(initialFormValues); //Butona basıldığında formu temizliyoruz.
   }
 
   return (
