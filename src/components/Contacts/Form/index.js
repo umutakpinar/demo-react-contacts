@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 
-function Index() {
+function Index( {addContact, contacts} ) {
   const [form, setForm] = useState({ fullName: "", number: "" });
 
   const formInputChanged = (e) => {
@@ -15,17 +15,19 @@ function Index() {
 
     if(form.fullName == "" || form.number == "") { //Buradaki if kontrolü ile form'un boş olup olmadığını kontrol ediyoruz
       alert("Please fill all the fields");
-      return false;
+      return false; // formu göndermeni engelliyor
     }
 
+    addContact(...contacts, form); //formu addContact prop'una gönderiyoruz, ki addContact prop'u Contacs Componetni içerisindeki contacts state'ine atıyor. (setContacts fonksiyonu)
+    console.log("Form'u addContact propuna gönderdim.")
     console.log(form); //Böylece butona basıldığında bize form'u consola yazdırsın.
-    form.fullName = ""; //Buradaki form.fullName = "" ile form'un fullName değişkenini boş yapıyoruz.
-    form.number = ""; //Buradaki form.number = "" ile form'un number değişkenini boş yapıyoruz.
+    form.fullName = ""; //Buradaki form.fullName = "" ile form'un fullName değişkenini boş yapıyoruz. Böylece state'de tutulan bilgi siliniyor.
+    form.number = ""; //Buradaki form.number = "" ile form'un number değişkenini boş yapıyoruz. Böylece state'de tutulan bilgi siliniyor.
   };
 
   const btnAddClearInputs = (e) =>{
-    document.getElementById("tbxFullName").value = "";
-    document.getElementById("tbxNumber").value = "";
+    document.getElementById("tbxFullName").value = ""; //UI'daki girdileri temizliyoruz. Tekrar tekrar add butonuna basılırsa girdileri tekrar doldurmasın diye. 
+    document.getElementById("tbxNumber").value = ""; //Bunu böyle yapmaktansa inputlara value olarak contacstaki değerlerini ver sonra setForm ile boşluk ata
   }
 
   return (
