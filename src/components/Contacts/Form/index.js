@@ -4,9 +4,13 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 
 function Index( {addContact, contacts} ) {
-  const initialFormValues = { fullName : "", phone : ""}; //Eğer sadece name ve phone gibi değil birçok değişkeni kullanmak istersem, bu şekilde yapabilirim ki her birini tek tek yazmak zorunda kalmayayım.
+  const initialFormValues = { fullName : "", number : ""}; //Eğer sadece name ve phone gibi değil birçok değişkeni kullanmak istersem, bu şekilde yapabilirim ki her birini tek tek yazmak zorunda kalmayayım.
   const [form, setForm] = useState(initialFormValues);
 
+  useEffect(()=>{ //contacts her değiştiğinde yani her yeni bir eleman eklendiğinde çalışacak
+    clearInputs(); // inputları temizleyecek
+  },[contacts]);
+  
   const formInputChanged = (e) => {
     setForm({ ...form, [e.target.name] : e.target.value }); //Buradaki [e.target.name] ile (yani Input'un anme değişkeni) fullName state'i ile aynı olmalı
   };
@@ -22,10 +26,10 @@ function Index( {addContact, contacts} ) {
     addContact([...contacts, form]); //formu addContact prop'una gönderiyoruz, ki addContact prop'u Contacs Componetni içerisindeki contacts state'ine atıyor. (setContacts fonksiyonu). Contacts bir dizi olduğu için dizi olarak gönderdim! [] kapalı aprantezlere dikkat!  
     console.log("Form'u addContact propuna gönderdim.")
     console.log(form); //Böylece butona basıldığında bize form'u consola yazdırsın.
-    btnAddClearInputs(); //Butona basıldığında formu temizleme işlemi yapıyor.
+    
   };
 
-  const btnAddClearInputs = (e) =>{
+  const clearInputs = (e) =>{
     setForm(initialFormValues); //Butona basıldığında formu temizliyoruz.
   }
 
