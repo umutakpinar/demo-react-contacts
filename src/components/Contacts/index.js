@@ -15,9 +15,7 @@ function Index() {
     return (
         <>
             <div className='container'>
-                <h3 className='display-3'>Contacts Section</h3>
-                <hr />
-                <List></List>
+                <List contacts={contacts}></List>
                 <Form addContact={setContacts} contacts={contacts}></Form>
             </div>
         </>

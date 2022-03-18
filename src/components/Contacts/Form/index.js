@@ -26,7 +26,7 @@ function Index( {addContact, contacts} ) {
     addContact([...contacts, form]); //formu addContact prop'una gönderiyoruz, ki addContact prop'u Contacs Componetni içerisindeki contacts state'ine atıyor. (setContacts fonksiyonu). Contacts bir dizi olduğu için dizi olarak gönderdim! [] kapalı aprantezlere dikkat!  
     console.log("Form'u addContact propuna gönderdim.")
     console.log(form); //Böylece butona basıldığında bize form'u consola yazdırsın.
-    
+
   };
 
   const clearInputs = (e) =>{
@@ -36,7 +36,7 @@ function Index( {addContact, contacts} ) {
   return (
     <>
       <div className="container">
-        <form onSubmit={formSubmit}>
+        <form className="container" onSubmit={formSubmit}>
           <div className="input-group  mb-3">
             <label
               htmlFor="tbxFullName"
