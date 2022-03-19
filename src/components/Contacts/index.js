@@ -1,11 +1,13 @@
 //Contacts index.js
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import List from './List'
 import Form from './Form'
 
 function Index() {
 
-    const [contacts, setContacts] = useState([]); //bir state tanımladım ve array tipinde. Bu state benim contacs'lerimi tutacak. 
+    const [contacts, setContacts] = useState([
+        {fullName : "Ahmet", number : "051995894"},{fullName : "Mehmet", number : "0556558595"},{fullName : "Ali", number : "0554 554 554"}
+    ]); //bir state tanımladım ve array tipinde. Bu state benim contacs'lerimi tutacak. 
     /* Ancak bu contacts state'ine atama yapabilmek için, useState fonksiyonumu kullanmam gerekli. Bu nedenle bu fonksiyonu proplar yardımıyla Form component'ine göndereceğim.
     Ki bu sayede bu setContacs yardımı ile Form compoennti içerisinden contacts'e atamam yapabileyim. */
 
